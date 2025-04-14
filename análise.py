@@ -13,7 +13,10 @@ df.head(10)
 
 df.columns
 df.shape
+df.dtypes
 
+# Verificando a existência de valores nulos
+df.isnull().sum()
 
 # Quais os tipos de ataque mais comuns?
 attack_types = df['Attack Type'].value_counts()
@@ -49,3 +52,16 @@ plt.xlabel('Anos')
 plt.ylabel('Perdas Financeiras (em milhões de dólares)')
 plt.show()
 
+
+# Quais os países mais afetados?
+countries_affected = df['Country'].value_counts()
+countries_affected
+
+plt.bar(countries_affected.index, countries_affected.values, color='red')
+plt.xlabel('Países')
+plt.ylabel('Quantidade de ataques')
+plt.xticks(rotation=45)
+plt.show()
+
+
+# 
