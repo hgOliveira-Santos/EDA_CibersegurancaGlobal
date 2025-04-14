@@ -57,16 +57,27 @@ plt.show()
 
 df_countries = df.groupby('Country').agg(
     AttackFrequency = ('Country', 'count'),
-    FinancialLoss = ('Financial Loss (in Million $)', 'sum'),
+    MeanResolutionTime = ('Incident Resolution Time (in Hours)', 'mean'),
+    MeanAffectedUsers = ('Number of Affected Users', 'mean'),
+    TotalAffectedUsers = ('Number of Affected Users', 'sum'),
+    FinancialLoss = ('Financial Loss (in Million $)', 'sum')
     )
+
+AvgLossPerAttack = df_countries['FinancialLoss'] / df_countries['AttackFrequency']
+df_countries['AvgLossPerAttack'] = AvgLossPerAttack
 
 most_common_attack = df.groupby('Country')['Attack Type'].agg(lambda x: x.mode().iloc[0])
 most_affected_industry = df.groupby('Country')['Target Industry'].agg(lambda x: x.mode().iloc[0])
 most_common_attack_source = df.groupby('Country')['Attack Source'].agg(lambda x: x.mode().iloc[0])
+most_explored_security_vulnerability = df.groupby('Country')['Security Vulnerability Type'].agg(lambda x: x.mode().iloc[0])
+most_common_defense_mechanism = df.groupby('Country')['Defense Mechanism Used'].agg(lambda x: x.mode().iloc[0])
+
 
 df_countries['MostCommonAttack'] = most_common_attack
 df_countries['MostAffectedIndustry'] = most_affected_industry
 df_countries['MostCommonAttackSource'] = most_common_attack_source
+df_countries['MostExploredSecurityVulnerability'] = most_explored_security_vulnerability
+df_countries['MostCommonDefenseMechanism'] = most_common_defense_mechanism
 
 df_countries
 
