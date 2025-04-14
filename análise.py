@@ -49,4 +49,3 @@ plt.xlabel('Anos')
 plt.ylabel('Perdas Financeiras (em milhões de dólares)')
 plt.show()
 
-
