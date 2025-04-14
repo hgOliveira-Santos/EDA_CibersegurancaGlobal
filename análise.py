@@ -20,6 +20,8 @@ attack_types = df['Attack Type'].value_counts()
 attack_types
 
 plt.bar(attack_types.index, attack_types.values, color='blue', edgecolor='lightblue')
+plt.xlabel('Tipos de ataque')
+plt.ylabel('Quantidade de ataques')
 plt.xticks(rotation=45)
 plt.show()
 
@@ -29,15 +31,22 @@ industries_affected = df['Target Industry'].value_counts()
 industries_affected
 
 plt.bar(industries_affected.index, industries_affected.values, color='green')
+plt.xlabel('Indústrias')
+plt.ylabel('Quantidade de ataques')
 plt.xticks(rotation=45)
 plt.show()
 
 
-# Qual o total de perdas financeiras por ano:?
+# Qual o total de perdas financeiras por ano?
 financial_loss_per_year = df.groupby('Year').agg(
     FinancialLoss = ('Financial Loss (in Million $)', 'sum')
     )
 financial_loss_per_year
 
-plt.bar()
+plt.bar(financial_loss_per_year.index, financial_loss_per_year['FinancialLoss'], 
+        color='orange')
+plt.xlabel('Anos')
+plt.ylabel('Perdas Financeiras (em milhões de dólares)')
+plt.show()
+
 
