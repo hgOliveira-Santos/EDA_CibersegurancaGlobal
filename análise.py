@@ -81,19 +81,44 @@ df_countries['MostCommonDefenseMechanism'] = most_common_defense_mechanism
 
 df_countries
 
-# Quais os países mais afetados?
+# Países mais afetados?
 
-plt.bar(df_countries.index, df_countries['AttackFrequency'], color='red')
-plt.xlabel('Países')
-plt.ylabel('Quantidade de ataques')
-plt.xticks(rotation=45)
+df_countries_sorted = df_countries.sort_values(by='AttackFrequency', ascending=False)
+
+plt.figure(figsize=(10, 6))  
+plt.barh(df_countries_sorted.index, df_countries_sorted['AttackFrequency'], color='red')
+plt.xlabel('Quantidade de ataques')
+plt.ylabel('Países')
+plt.title('Frequência de Ataques por País')
+plt.gca().invert_yaxis() 
 plt.show()
 
-# Quais países tiveram maiores prejuízos financeiros 
+# Países com maiores prejuízos financeiros 
 
-plt.bar(df_countries.index, df_countries['FinancialLoss'], color='blue')
-plt.xlabel('Países')
-plt.ylabel('Perdas Financeiras (em milhoes de dólares')
+df_countries_sorted = df_countries.sort_values(by='FinancialLoss', ascending=False)
+
+plt.barh(df_countries_sorted.index, df_countries_sorted['FinancialLoss'], color='blue')
+plt.ylabel('Países')
+plt.xlabel('Perdas Financeiras (em milhoes de dólares')
 plt.xticks(rotation=45)
+plt.gca().invert_yaxis() 
 plt.show()
 
+# Perda média por ataque por país 
+
+df_countries_sorted = df_countries.sort_values(by='AvgLossPerAttack', ascending=False)
+
+plt.barh(df_countries_sorted.index, df_countries_sorted['AvgLossPerAttack'], color='blue')
+plt.xlabel('Países')
+plt.ylabel('Perda Financeira Média (em milhoes de dólares')
+plt.xticks(rotation=45)
+plt.gca().invert_yaxis() 
+plt.show()
+
+# Média de usuários afetados por ataque por país
+
+df_countries.sort_values('MeanAffectedUsers', ascending=True)['MeanAffectedUsers'].plot(kind='barh', figsize=(10, 8), color='skyblue')
+plt.xlabel('Média de Usuários Afetados por Ataque')
+plt.title('Média de Usuários Afetados por Ataque por País')
+plt.tight_layout()
+plt.show()
