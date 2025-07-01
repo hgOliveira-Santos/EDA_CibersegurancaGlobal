@@ -1,8 +1,8 @@
-# 📊 Análise Global de Ameaças Cibernéticas (2015–2024)
+# Análise Global de Ameaças Cibernéticas (2015–2024)
 
 Este projeto realiza uma análise exploratória de dados (EDA) sobre incidentes de **ameaças cibernéticas globais** entre 2015 e 2024, com foco nos tipos de ataques, indústrias afetadas, perdas financeiras, países mais impactados e usuários comprometidos.
 
-## 🔍 Objetivo
+## Objetivo
 
 Compreender padrões e tendências em ataques cibernéticos ao redor do mundo, respondendo a perguntas como:
 
@@ -14,7 +14,7 @@ Compreender padrões e tendências em ataques cibernéticos ao redor do mundo, r
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ### 1. Leitura e inspeção dos dados
 - Carregamento do dataset `Global_Cybersecurity_Threats_2015-2024.csv`
@@ -40,6 +40,3 @@ Compreender padrões e tendências em ataques cibernéticos ao redor do mundo, r
 ### 4. Visualizações
 - Gráficos de barras horizontais e verticais para representar os dados
 - Foco visual nos países mais afetados e nos prejuízos econômicos
-
-
-
